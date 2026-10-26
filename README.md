@@ -42,6 +42,12 @@
 * **Average Rental Duration / Ortalama Film Kiralama Süresi:**
     * *EN:* Monitoring the average turnaround time between rental and return dates.
     * *TR:* Kiralama tarihi ile iade tarihi arasında geçen ortalama sürelerin takibi.
+* **Rental Velocity & Turnaround Time / Kiralama Hızı ve Dönüş Süresi:**
+    * *EN:* Average turnaround time elapsed from rental issuance to physical return per store.
+    * *TR:* Bir filmin kiralandıktan sonra fiziksel olarak mağazaya dönünceye kadar geçen ortalama dönüş süresinin mağaza bazlı analizi.
+* **Peak Rental Hours / Saatlik Kiralama Yoğunluğu:**
+    * *EN:* Identifying peak hours and transaction distribution across stores throughout the day.
+    * *TR:* Mağazaların günün hangi saatlerinde en yoğun kiralama işlemi aldığının saat dilimlerine göre tespiti.
 
 ### 📦 Inventory & Asset Management / Envanter ve Varlık Yönetimi
 * **Inventory Utilization & Stock-Out Risk / Envanter Kullanım Oranı:**
@@ -53,6 +59,12 @@
 * **Replacement Cost Analysis / Yenileme Maliyeti Analizi:**
     * *EN:* Portfolio value and replacement cost liability across inventory items.
     * *TR:* Envanter kalemlerinin portföy değeri ve yenileme maliyeti yükümlülüğü.
+* **Stock Utilization Rate & Idle Inventory / Envanter Kullanım Oranı ve Atıl Stok:**
+    * *EN:* Identifying dead inventory items that have not been rented in the last 6 months and their share in portfolio value.
+    * *TR:* Son 6 aydır hiç kiralanmamış "ölü" envanter kalemlerinin tespiti ve toplam portföy değerindeki payı.
+* **Multi-Store Inventory Balancing / Mağazalar Arası Stok Dengesizliği:**
+    * *EN:* Analyzing high-demand stock-outs versus idle inventory locations across multiple stores.
+    * *TR:* Çok talep gören filmlerin hangi mağazalarda stok tükettiği, hangi mağazalarda ise boşta yattığının analizi.
 
 ### 👥 Customer Insights & CRM / Müşteri Deneyimi ve CRM
 * **Active vs. Inactive Customers / Aktif ve İnaktif Müşteri Segmentasyonu:**
@@ -64,6 +76,12 @@
 * **Store-based Customer Distribution / Mağaza Bazlı Müşteri Dağılımı:**
     * *EN:* Analyzing customer density and preferences across different store locations.
     * *TR:* Farklı mağaza lokasyonlarındaki müşteri yoğunluğu ve tercihlerinin analizi.
+* **RFM Analysis (Recency, Frequency, Monetary) / RFM Segmentasyon Analizi:**
+    * *EN:* Grouping customers into behavioral segments (Champions, At-Risk, Hibernating) based on recency, frequency, and spend.
+    * *TR:* Müşterilerin son işlem tarihi, kiralama sıklığı ve harcama tutarına göre (Şampiyonlar, Risk Altındakiler vb.) segmentasyonu.
+* **Category Cross-Sell & Migration / Kategori Çapraz Satış ve Geçiş Analizi:**
+    * *EN:* Identifying secondary film genre preferences of customers to discover cross-sell opportunities.
+    * *TR:* Müşterilerin kiraladıkları ana tür haricinde en sık yöneldikleri ikinci film türünün ve çapraz satış potansiyelinin tespiti.
 
 ### 💰 Finance & Revenue Accounting / Finans ve Muhasebe
 * **Monthly Revenue & Cash Flow / Aylık Ciro ve Nakit Akışı:**
@@ -75,6 +93,12 @@
 * **Payment Methods & Average Ticket / Ödeme Analizi ve Sepet Ortalaması:**
     * *EN:* Transaction volumes and average spending amounts per rental ticket.
     * *TR:* Kiralama başına işlem hacimleri ve ortalama harcama tutarları.
+* **Cumulative Customer Spend & LTV Ranking / Kümülatif Ciro ve Müşteri Yaşam Boyu Değeri:**
+    * *EN:* Cumulative revenue contribution ranking of customers to evaluate Pareto (80/20) distribution.
+    * *TR:* Müşterilerin harcama tutarlarına göre kümülatif ciroya katkı yüzdelerinin (Pareto 80/20 kuralı) sıralanması.
+* **Late Fee & Penalty Revenue Impact / Gecikme Cezası ve Ek Gelir Analizi:**
+    * *EN:* Analyzing the financial share of penalty fees generated from overdue rentals exceeding standard loan periods.
+    * *TR:* Standart kiralama süresini aşan gecikmelerden elde edilen ceza ve ek gelirlerin toplam ciro içindeki payı.
 
 ---
 
