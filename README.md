@@ -36,9 +36,11 @@ TR: Proje kapsamında yer alan ve perakende/kiralama işletmesinin farklı birim
 Monthly Rental Trends / Aylık Kiralama Trendleri:
 EN: Tracking total rental volume and MoM growth analysis.
 TR: Aylık toplam kiralama adedi ve büyüme analizi.
+
 Top Rented Categories / En Çok Kiralanan Kategoriler:
 EN: Identifying high-performing film genres and category revenue shares.
 TR: En yüksek performans gösteren film türleri ve kategori bazlı ciro payları.
+
 Average Rental Duration / Ortalama Film Kiralama Süresi:
 EN: Monitoring the average turnaround time between rental and return dates.
 TR: Kiralama tarihi ile iade tarihi arasında geçen ortalama sürelerin takibi.
