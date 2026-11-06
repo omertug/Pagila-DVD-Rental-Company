@@ -1,4 +1,7 @@
 # Aylık Kiralama Trendleri.sql
+
+<img width="606" height="176" alt="image" src="https://github.com/user-attachments/assets/29b63fa1-1274-4b5b-a0db-2cd4706af166" />
+
 ### `DATE_TRUNC('month', rental_date)` 
 Örneğin 2026-05-14 14:30:00 gibi detaylı bir tarih bilgisini alıp 2026-05-01 00:00:00 haline getirir. Böylece aynı ay içinde yapılan binlerce kiralama tek bir "Mayıs 2026" çatısı altında toplanır.
 
