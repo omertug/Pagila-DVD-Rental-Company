@@ -24,6 +24,10 @@
 * **`store` & `staff`**: Mağaza yapıları ve personel operasyon yönetimi.
 
 ---
+NOTlar:
+* Raporlama için olan büyük sorgularımı genel olarak **WITH ... AS (...)** (CTE - Common Table Expression / Ortak Tablo İfadesi) ile yazıyorum. Çünkü **CTE** sadece o an yazdığın ana sorguyla hafızada anlık olarak yaşar. Sorgunu çalıştırdığın an DB bunu bellekte oluşturur, sorgu bittiği an hafızadan siler. Veritabanında kalıcı bir nesne (object) yaratmaz. Veritabanında "kirlilik" yaratmaz. Drop etme veya temizleme derdin yoktur. Sadece o sorgunun okunabilirliğini artırmak için yazılır.
+* 
+
 
 ## 📊 Business Intelligence & Analytical Queries (KPIs) / İş Analitiği ve Temel Performans Göstergeleri (KPI)
 > **EN:** Below is a list of business-critical SQL metrics included in this project, designed to provide actionable insights for various departments of a retail and rental enterprise.
@@ -36,6 +40,39 @@
 * **Monthly Rental Trends / Aylık Kiralama Trendleri:**
     * *EN:* Tracking total rental volume and MoM growth analysis.
     * *TR:* Aylık toplam kiralama adedi ve büyüme analizi.
+
+ Query:
+ WITH monthly_rentals AS (
+    -- Adım 1: Her ay bazında toplam kiralama adetlerini buluyoruz
+    SELECT 
+        DATE_TRUNC('month', rental_date)::DATE AS rental_month,
+        COUNT(rental_id) AS total_rentals
+    FROM rental
+    GROUP BY 1
+),
+rental_growth AS (
+    -- Adım 2: LAG() fonksiyonu ile "bir önceki ayın" kiralama adetini yan sütuna getiriyoruz
+    SELECT 
+        rental_month,
+        total_rentals,
+        LAG(total_rentals, 1) OVER (ORDER BY rental_month) AS previous_month_rentals
+    FROM monthly_rentals
+)
+-- Adım 3: Büyüme oranını (yüzdesel değişim) matematiksel olarak hesaplıyoruz
+SELECT 
+    TO_CHAR(rental_month, 'YYYY-MM') AS ay,
+    total_rentals AS cari_ay_kiralama_adedi,
+    COALESCE(previous_month_rentals, 0) AS onceki_ay_kiralama_adedi,
+    -- Büyüme Formülü: ((Şimdiki - Önceki) / Önceki) * 100
+    CASE 
+        WHEN previous_month_rentals IS NULL OR previous_month_rentals = 0 THEN 0
+        ELSE ROUND(((total_rentals - previous_month_rentals)::NUMERIC / previous_month_rentals) * 100, 2)
+    END AS buyume_orani_yuzde
+FROM rental_growth
+ORDER BY rental_month;
+
+
+
 * **Top Rented Categories / En Çok Kiralanan Kategoriler:**
     * *EN:* Identifying high-performing film genres and category revenue shares.
     * *TR:* En yüksek performans gösteren film türleri ve kategori bazlı ciro payları.
