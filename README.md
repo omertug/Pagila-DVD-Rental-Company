@@ -36,7 +36,7 @@ NOTlar:
 
 ---
 
-### 🏪 Store Operations & Rental Management / Mağaza Operasyonları ve Kiralama Müdürlüğü
+### 🏪 1- Store Operations & Rental Management / Mağaza Operasyonları ve Kiralama Müdürlüğü
 * **Monthly Rental Trends / Aylık Kiralama Trendleri:**
     * *EN:* Tracking total rental volume and MoM growth analysis.
     * *TR:* Aylık toplam kiralama adedi ve büyüme analizi.
@@ -86,7 +86,7 @@ ORDER BY rental_month;
     * *EN:* Identifying peak hours and transaction distribution across stores throughout the day.
     * *TR:* Mağazaların günün hangi saatlerinde en yoğun kiralama işlemi aldığının saat dilimlerine göre tespiti.
 
-### 📦 Inventory & Asset Management / Envanter ve Varlık Yönetimi
+### 📦 2- Inventory & Asset Management / Envanter ve Varlık Yönetimi
 * **Inventory Utilization & Stock-Out Risk / Envanter Kullanım Oranı:**
     * *EN:* Measuring active rentals versus total physical stock in stores.
     * *TR:* Mağazalardaki toplam fiziksel stok ile aktif kiralamaların kıyaslanması.
@@ -103,7 +103,7 @@ ORDER BY rental_month;
     * *EN:* Analyzing high-demand stock-outs versus idle inventory locations across multiple stores.
     * *TR:* Çok talep gören filmlerin hangi mağazalarda stok tükettiği, hangi mağazalarda ise boşta yattığının analizi.
 
-### 👥 Customer Insights & CRM / Müşteri Deneyimi ve CRM
+### 👥 3- Customer Insights & CRM / Müşteri Deneyimi ve CRM
 * **Active vs. Inactive Customers / Aktif ve İnaktif Müşteri Segmentasyonu:**
     * *EN:* Identifying customers who haven't rented a movie in the last 90 days (Churn Risk).
     * *TR:* Son 90 gündür film kiralamayan müşterilerin tespiti (Kayıp Riski).
@@ -120,7 +120,7 @@ ORDER BY rental_month;
     * *EN:* Identifying secondary film genre preferences of customers to discover cross-sell opportunities.
     * *TR:* Müşterilerin kiraladıkları ana tür haricinde en sık yöneldikleri ikinci film türünün ve çapraz satış potansiyelinin tespiti.
 
-### 💰 Finance & Revenue Accounting / Finans ve Muhasebe
+### 💰 4- Finance & Revenue Accounting / Finans ve Muhasebe
 * **Monthly Revenue & Cash Flow / Aylık Ciro ve Nakit Akışı:**
     * *EN:* Tracking total rental payments and daily/monthly revenue trends.
     * *TR:* Toplam kiralama ödemeleri ve günlük/aylık ciro trendlerinin takibi.
