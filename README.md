@@ -33,7 +33,7 @@
 ---
 
 ### 🏪 1- Store Operations & Rental Management / Mağaza Operasyonları ve Kiralama Müdürlüğü
-* **Monthly Rental Trends / Aylık Kiralama Trendleri:** [Query](https://github.com/omertug/Pagila-DVD-Rental-Company/Magaza Operasyon ve Kiralama/Aylık Kiralama Trendleri.sql)
+* **Monthly Rental Trends / Aylık Kiralama Trendleri:** [Query](https://github.com/omertug/Pagila-DVD-Rental-Company/blob/1fb19dbf49d7f32abd051e7c43b9a62946ae7b60/Magaza%20Operasyon%20ve%20Kiralama/Ayl%C4%B1k%20Kiralama%20Trendleri.sql)
     * *EN:* Tracking total rental volume and MoM growth analysis.
     * *TR:* Aylık toplam kiralama adedi ve büyüme analizi.
 
