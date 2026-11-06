@@ -1,9 +1,8 @@
 /*******************************************************************************
 -- Proje: İleri Düzey SQL & Kurumsal Veri Mimarisi Portfolyosu
--- Departman: Mağaza Operasyonları ve Kiralama Müdürlüğü
+-- Departman: Mağaza Operasyon ve Kiralama
 -- Analiz Adı: En Çok Kiralanan Kategoriler ve Ciro Payları
--- Açıklama: Film kategorilerinin kiralama adetlerini ve toplam ciroya 
---           katkı yüzdelerini çoklu tablo birleştirmeleriyle (JOIN) raporlar.
+-- Açıklama: Film kategorilerinin kiralama adetlerini ve toplam ciroya katkı yüzdelerini çoklu tablo birleştirmeleriyle (JOIN) raporlar.
 *******************************************************************************/
 
 SELECT 
