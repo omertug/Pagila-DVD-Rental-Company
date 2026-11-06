@@ -33,11 +33,11 @@
 ---
 
 ### 🏪 1- Store Operations & Rental Management / Mağaza Operasyonları ve Kiralama Müdürlüğü
-* **Monthly Rental Trends / Aylık Kiralama Trendleri:** [Query](https://github.com/omertug/Pagila-DVD-Rental-Company/blob/1fb19dbf49d7f32abd051e7c43b9a62946ae7b60/Magaza%20Operasyon%20ve%20Kiralama/Ayl%C4%B1k%20Kiralama%20Trendleri.sql)
+* **Monthly Rental Trends / Aylık Kiralama Trendleri:** [Query](https://github.com/omertug/Pagila-DVD-Rental-Company/blob/main/Magaza-Operasyon-Kiralama/aylik-kiralama-trendleri.sql)
     * *EN:* Tracking total rental volume and MoM growth analysis.
     * *TR:* Aylık toplam kiralama adedi ve büyüme analizi.
 
-* **Top Rented Categories / En Çok Kiralanan Kategoriler:**
+* **Top Rented Categories / En Çok Kiralanan Kategoriler:** [Query](https://github.com/omertug/Pagila-DVD-Rental-Company/blob/main/Magaza-Operasyon-Kiralama/en-cok-kiralanan-kategoriler-ciro-paylari.sql)
     * *EN:* Identifying high-performing film genres and category revenue shares.
     * *TR:* En yüksek performans gösteren film türleri ve kategori bazlı ciro payları.
 * **Average Rental Duration / Ortalama Film Kiralama Süresi:**
