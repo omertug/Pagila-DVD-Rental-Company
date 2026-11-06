@@ -1,25 +1,18 @@
 # En Çok Kiralanan Kategoriler ve Ciro Payları.sql
 
-<img width="606" height="176" alt="image" src="https://github.com/user-attachments/assets/29b63fa1-1274-4b5b-a0db-2cd4706af166" />
+<img width="525" height="447" alt="image" src="https://github.com/user-attachments/assets/5dbb6738-9fed-42c3-b91d-61a0ff9a3cfc" />
 
-### `DATE_TRUNC('month', rental_date)` 
-Örneğin 2026-05-14 14:30:00 gibi detaylı bir tarih bilgisini alıp 2026-05-01 00:00:00 haline getirir. Böylece aynı ay içinde yapılan binlerce kiralama tek bir "Mayıs 2026" çatısı altında toplanır.
+### `JOIN` Yapısı
+Kategoriler `film_category` ile filmler `film` doğrudan birbirine bağlı değildir; aralarında `film_category` adında bir köprü (Bridge) tablo vardır. `category` tablosundan kategori adını alıyoruz, `film_category` ve `film` üzerinden filmlere ulaşıyoruz. Filmin fiziksel olarak hangi mağazada stokta olduğunu gösteren `inventory` tablosuna, oradan müşterinin kiralama hareketini tutan `rental` tablosuna ve nihayetinde paranın ödendiği `payment` tablosuna bağlanarak zinciri tamamlıyoruz.
+🔗 https://www.postgresql.org/docs/current/tutorial-join.html
 
-🚀 **TIMESTAMP WITH TIME ZONE** veri tipi 2005-05-26 21:06:14+03 örnek açıklaması:
-- 2005: Yıl (Year) kısmıdır.
-- 05: Ay (Month) kısmıdır (Mayıs ayı).
-- 26: Gün (Day) kısmıdır (Ayın 26'sı).
-- 21: Saat (Hour) kısmıdır (24'lük saat dilimine göre akşam 21:00 / 09:00).
-- 06: Dakika (Minute) kısmıdır.
-- 14: Saniye (Second) kısmıdır.
-- +03: Zaman Dilimi (Time Zone Offset) bilgisidir. UTC'ye (koordinatlı evrensel saate) göre +3 saat ilerde olduğumuzu (örneğin Türkiye saat dilimini) ifade eder.
+### GROUP BY & SUM & COUNT
+- `GROUP BY cat.name` ile tüm kategorileri grupluyoruz ki `SUM` ve `COUNT` kullanabilelim.
+- `COUNT(r.rental_id)` ile her bir kategorinin kaç kez kiralandığını sayıyoruz.
+- `SUM(p.amount)` ile her kategorinin kasaya bıraktığı toplam parayı (ciroyu) topluyoruz.
 
-### `LAG(total_rentals, 1) OVER (ORDER BY rental_month)`
-Sihirli kısım burası :smile: `ORDER BY rental_month` ile ayları kronolojik olarak sıralıyoruz. LAG(..., 1) ise imleci 1 satır yukarı (bir önceki aya) kaydırıp o ayın kiralama adetini bugünkü satırın yanına kolon olarak yazıyor.
+### `OVER ()` Pencere Fonksiyonu
+`SUM(SUM(p.amount)) OVER ()` ifadesi, satırları grupladıktan sonra tüm kategorilerin toplam cirosunu hesaplayıp her satırın yanına sabit bir toplam olarak yazar. Böylece her kategori cirosunu, şirket genel cirosuna bölerek o kategorinin ciro payı yüzdesini (ciro_payi_yuzde) tertemiz bir şekilde elde ederiz.
 
-### `COALESCE(...)`
-İlk ayımızın bir önceki ayı olmadığı ya da hiç kiralama olmayan bir ay için LAG fonksiyonu NULL (boş) döner. COALESCE fonksiyonu bu boş değerleri 0 ile değiştirerek matematiksel hesaplama hatasının (Division by zero) önüne geçer.
-
-### `ROUND(..., 2)`
-Çıkan ondalıklı büyüme oranını (örneğin 12.3456...) virgülden sonra 2 basamağa yuvarlar (%12.35 gibi)
-
+### `ORDER BY toplam_ciro DESC` 
+En çok kazandıran kategoriyi en üste dizeriz.
