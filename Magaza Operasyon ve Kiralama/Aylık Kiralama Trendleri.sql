@@ -1,28 +1,34 @@
-WITH monthly_rentals AS (
-    -- Adım 1: Her ay bazında toplam kiralama adetlerini buluyoruz
+/*******************************************************************************
+-- Proje: İleri Düzey SQL & Kurumsal Veri Mimarisi Portfolyosu
+-- Departman: Mağaza Operasyon ve Kiralama
+-- Analiz Adı: Aylık Kiralama Trendleri ve Büyüme Analizi (MoM)
+-- Açıklama: Bu sorgu, aylık toplam kiralama hacimlerini ve bir önceki aya göre yüzde değişim (büyüme) oranlarını CTE ve LAG fonksiyonu kullanarak raporlar.
+*******************************************************************************/
+
+WITH aylik_kiralamalar AS (
+    -- Tarihi ay bazına yuvarlayıp, o ay yapılan toplam kiralama adedini buluyoruz
     SELECT 
-        DATE_TRUNC('month', rental_date)::DATE AS rental_month,
-        COUNT(rental_id) AS total_rentals
+        DATE_TRUNC('month', rental_date)::DATE AS kiralama_ayi,
+        COUNT(rental_id) AS toplam_kiralama_adedi
     FROM rental
     GROUP BY 1
 ),
-rental_growth AS (
-    -- Adım 2: LAG() fonksiyonu ile "bir önceki ayın" kiralama adetini yan sütuna getiriyoruz
+kiralama_buyume AS (
+    -- LAG fonksiyonu ile bir önceki ayın kiralama adetini yan sütuna çekiyoruz
     SELECT 
-        rental_month,
-        total_rentals,
-        LAG(total_rentals, 1) OVER (ORDER BY rental_month) AS previous_month_rentals
-    FROM monthly_rentals
+        kiralama_ayi,
+        toplam_kiralama_adedi,
+        LAG(toplam_kiralama_adedi, 1) OVER (ORDER BY kiralama_ayi) AS onceki_ay_kiralama_adedi
+    FROM aylik_kiralamalar
 )
--- Adım 3: Büyüme oranını (yüzdesel değişim) matematiksel olarak hesaplıyoruz
+-- Çıktı kolonlarını tamamen Türkçe isimlendirerek büyüme oranını hesaplıyoruz
 SELECT 
-    TO_CHAR(rental_month, 'YYYY-MM') AS ay,
-    total_rentals AS cari_ay_kiralama_adedi,
-    COALESCE(previous_month_rentals, 0) AS onceki_ay_kiralama_adedi,
-    -- Büyüme Formülü: ((Şimdiki - Önceki) / Önceki) * 100
+    TO_CHAR(kiralama_ayi, 'YYYY-MM') AS yil_ay,
+    toplam_kiralama_adedi AS cari_ay_kiralama,
+    COALESCE(onceki_ay_kiralama_adedi, 0) AS onceki_ay_kiralama,
     CASE 
-        WHEN previous_month_rentals IS NULL OR previous_month_rentals = 0 THEN 0
-        ELSE ROUND(((total_rentals - previous_month_rentals)::NUMERIC / previous_month_rentals) * 100, 2)
-    END AS buyume_orani_yuzde
-FROM rental_growth
-ORDER BY rental_month;
+        WHEN onceki_ay_kiralama_adedi IS NULL OR onceki_ay_kiralama_adedi = 0 THEN 0
+        ELSE ROUND(((toplam_kiralama_adedi - onceki_ay_kiralama_adedi)::NUMERIC / onceki_ay_kiralama_adedi) * 100, 2)
+    END AS aylik_buyume_yuzdesi
+FROM kiralama_buyume
+ORDER BY kiralama_ayi;
